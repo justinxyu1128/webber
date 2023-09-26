@@ -99,6 +99,8 @@ function webber_setup() {
 			'flex-height' => true,
 		)
 	);
+	
+	add_theme_support( 'alignwide' );
 }
 add_action( 'after_setup_theme', 'webber_setup' );
 
@@ -146,6 +148,11 @@ function webber_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	
+	wp_enqueue_style( 'aos-style', "https://unpkg.com/aos@2.3.1/dist/aos.css" );
+	wp_enqueue_script( 'aos-script', 'https://unpkg.com/aos@2.3.1/dist/aos.js',false, null, true );
+	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
+
 }
 add_action( 'wp_enqueue_scripts', 'webber_scripts' );
 
