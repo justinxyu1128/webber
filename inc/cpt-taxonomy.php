@@ -68,11 +68,11 @@ function webber_register_students() {
         'query_var'          => true,
         'rewrite'            => array( 'slug' => 'student'),
         'capability_type'    => 'post',
-        'has_archive'        => false,
+        'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 6,
         'menu_icon'          => 'dashicons-forms',
-        'supports'           => array( 'title', 'editor' ),
+        'supports'           => array( 'title', 'editor', 'thumbnail' ),
 		'template'           => array(
 			array( 'core/paragraph', array( 'placeholder' => 'Describe yourself...' ) ),
 			array( 'core/button' ),
@@ -115,3 +115,34 @@ function webber_register_staff_taxonomies() {
     register_taxonomy( 'webber-staff-category', array( 'webber-staff' ), $args );
 }
 add_action( 'init', 'webber_register_staff_taxonomies');
+
+function webber_register_student_taxonomies() {
+    // Add Student Category taxonomy
+    $labels = array(
+        'name'              => _x( 'Student Categories', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Student Category', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Student Categories' ),
+        'all_items'         => __( 'All Student Category' ),
+        'parent_item'       => __( 'Parent Student Category' ),
+        'parent_item_colon' => __( 'Parent Student Category:' ),
+        'edit_item'         => __( 'Edit Student Category' ),
+        'view_item'         => __( 'View Student Category' ),
+        'update_item'       => __( 'Update Student Category' ),
+        'add_new_item'      => __( 'Add New Student Category' ),
+        'new_item_name'     => __( 'New Student Category Name' ),
+        'menu_name'         => __( 'Student Category' ),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'student-categories' ),
+    );
+    register_taxonomy( 'webber-student-category', array( 'webber-student' ), $args );
+}
+add_action( 'init', 'webber_register_student_taxonomies');
