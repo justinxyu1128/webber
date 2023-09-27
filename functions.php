@@ -12,6 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -149,12 +150,30 @@ function webber_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	wp_enqueue_style( 'aos-style', "https://unpkg.com/aos@2.3.1/dist/aos.css" );
-	wp_enqueue_script( 'aos-script', 'https://unpkg.com/aos@2.3.1/dist/aos.js',false, null, true );
-	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
+	
+	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'aos-settings', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
+	wp_enqueue_style( 
+		'aos-css', 
+		get_template_directory_uri() .'/sass/aos.scss', 
+		array(), 
+		'20210501',
+	);
 
 }
 add_action( 'wp_enqueue_scripts', 'webber_scripts' );
+
+function webber_change_title_text( $title ){
+	$screen = get_current_screen();
+  
+	if  ( 'webber-student' == $screen->post_type ) {
+		 $title = 'Add student name';
+	}
+  
+	return $title;
+}
+  
+add_filter( 'enter_title_here', 'webber_change_title_text' );
 
 /**
  * Implement the Custom Header feature.
@@ -182,4 +201,6 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+require get_template_directory() . '/inc/cpt-taxonomy.php';
 
