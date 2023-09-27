@@ -33,16 +33,13 @@
 	<?php webber_post_thumbnail(); ?>
 
 	<div class="entry-content">
-		
-			<?php
-	
-			if(is_single()){
-				the_content();
-			}else {
-				the_excerpt();
-		} 	
-		
-	
+		<?php
+		if (is_single()) {
+			the_content();
+		}
+		else {
+			the_excerpt();
+		}
 
 		wp_link_pages(
 			array(
