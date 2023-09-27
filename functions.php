@@ -153,12 +153,7 @@ function webber_scripts() {
 	
 	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'aos-settings', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
-	wp_enqueue_style( 
-		'aos-css', 
-		get_template_directory_uri() .'/sass/aos.scss', 
-		array(), 
-		'20210501',
-	);
+	
 
 }
 add_action( 'wp_enqueue_scripts', 'webber_scripts' );

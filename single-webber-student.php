@@ -20,13 +20,10 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
+			$singleID = get_the_ID();
 			get_template_part( 'template-parts/content', get_post_type() );
 			$taxonomy = 'webber-student-category';
-			$terms    = get_terms(
-				array(
-					'taxonomy' => $taxonomy,
-				)
-			);
+			$terms = get_the_terms($post->ID, "webber-student-category");
 			if ( $terms && ! is_wp_error( $terms ) ) {
 				foreach ( $terms as $term ) {
 					$args = array(
@@ -49,11 +46,14 @@ get_header();
 						// Output Content.
 						while ( $query1->have_posts() ) {
 							$query1->the_post();
-							?>
+							if ($singleID != get_the_ID()){
+								?>
 								<a href="<?php the_permalink(); ?>">
 									<h3><?php the_title(); ?></h2>
 								</a>
-							<?php
+								<?php
+							}
+							
 							
 						}
 						wp_reset_postdata();

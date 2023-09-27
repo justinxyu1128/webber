@@ -37,14 +37,12 @@ get_header();
                         <a href="<?php the_permalink(); ?>">
                             <h2><?php the_title(); ?></h2>
                             <?php the_post_thumbnail( 'large' ); ?>
-                            <?php 
-                            $terms = get_the_term_list($post->ID, 'webber-student-category');
-                            echo $terms;
-                            ?>
                         </a>
                         <?php the_excerpt(); ?>
                     </article>
-                    <?php
+					<?php 
+                            $terms = get_the_term_list($post->ID, 'webber-student-category', 'Specialty:');
+                            echo $terms;
 				}
 				wp_reset_postdata();
 			}
