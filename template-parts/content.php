@@ -9,8 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> data-aos="fade-up">
-
+<article id="post-<?php the_ID(); ?>" <?php post_class(); if ( is_page('news') ) : ?>data-aos="fade-up"<?php endif; ?> >
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :

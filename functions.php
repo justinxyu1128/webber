@@ -100,8 +100,8 @@ function webber_setup() {
 			'flex-height' => true,
 		)
 	);
-	
-	add_theme_support( 'alignwide' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'align-full' );
 }
 add_action( 'after_setup_theme', 'webber_setup' );
 
@@ -149,7 +149,6 @@ function webber_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-	
 	
 	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'aos-settings', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
