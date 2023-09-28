@@ -102,6 +102,7 @@ function webber_setup() {
 	);
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'align-full' );
+	
 }
 add_action( 'after_setup_theme', 'webber_setup' );
 
@@ -198,3 +199,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 require get_template_directory() . '/inc/cpt-taxonomy.php';
 
+// Change the Excerpt Length from 55 to 20
+function webber_excerpt_length ( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'webber_excerpt_length', 999);
