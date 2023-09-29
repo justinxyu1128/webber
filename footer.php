@@ -13,6 +13,7 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php the_custom_logo(); ?></a>
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'webber' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
@@ -25,6 +26,10 @@
 				printf( esc_html__( 'Theme: %1$s by %2$s.', 'webber' ), 'webber', '<a href="https://justiny.ca/">Justin Yu</a>' );
 				?>
 		</div><!-- .site-info -->
+		<nav class="footer-navigation">
+			<h2>Links</h2>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>
+		</nav>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

@@ -6,7 +6,8 @@
  *
  * @package FWD_Starter_Theme
  */
-
+add_filter( 'excerpt_length', 'webber_excerpt_length', 999 );
+add_filter( 'excerpt_more', 'webber_excerpt_read_more' );
 get_header();
 ?>
 

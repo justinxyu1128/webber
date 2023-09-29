@@ -50,7 +50,8 @@ function webber_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'webber' ),
+			'header' => esc_html__( 'Header', 'webber' ),
+			'footer' => esc_html__( 'Footer', 'webber' ),
 		)
 	);
 
@@ -164,12 +165,17 @@ function webber_change_title_text( $title ){
 	if  ( 'webber-student' == $screen->post_type ) {
 		 $title = 'Add student name';
 	}
+	if  ( 'webber-staff' == $screen->post_type ) {
+		$title = 'Add staff name';
+   }
   
 	return $title;
 }
   
 add_filter( 'enter_title_here', 'webber_change_title_text' );
 add_image_size( 'student-portrait', 200, 300);
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -199,8 +205,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 require get_template_directory() . '/inc/cpt-taxonomy.php';
 
-// Change the Excerpt Length from 55 to 20
-function webber_excerpt_length ( $length ) {
-	return 20;
+function webber_excerpt_length( $length ) {
+    return 25;
 }
-add_filter( 'excerpt_length', 'webber_excerpt_length', 999);
+
+function webber_excerpt_read_more( $more ) {
+    $more = '... <a class="read-more" href="' . esc_url( get_permalink() ) . '">Read more about the student...</a>';
+    return $more;
+}
