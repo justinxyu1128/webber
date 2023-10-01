@@ -553,6 +553,10 @@ a:hover, a:active {
 	outline: 0;
 }
 
+.entry-footer span {
+	margin-right: 1rem;
+}
+
 /* Forms
 --------------------------------------------- */
 button,
