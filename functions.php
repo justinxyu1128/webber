@@ -95,8 +95,8 @@ function webber_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 50,
+			'width'       => 50,
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
@@ -174,6 +174,7 @@ function webber_change_title_text( $title ){
   
 add_filter( 'enter_title_here', 'webber_change_title_text' );
 add_image_size( 'student-portrait', 200, 300);
+add_image_size( 'blog-post', 300, 200, array( 'left', 'top' ));
 
 
 /**

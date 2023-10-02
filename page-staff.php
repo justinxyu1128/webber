@@ -54,9 +54,11 @@ while ( have_posts() ) :
 					if ( $query->have_posts() ) {
 						// Output Term name.
 						echo '<h2>' . esc_html( $term->name ) . '</h2>';
+						echo '<div class="staff-wrapper">';
 						// Output Content.
 						while ( $query->have_posts() ) {
 							$query->the_post();
+							echo '<article>';
 							if ( function_exists( 'get_field' ) ) {
 								if ( get_field( 'staff_bio' ) ) {
 									echo '<h3 id="' . esc_attr( get_the_ID() ) . '">' . esc_html( get_the_title() ) . '</h3>';
@@ -71,7 +73,9 @@ while ( have_posts() ) :
                                     }
                                 }
 							}
+							echo '</article>';
 						}
+						echo '</div>';
 						wp_reset_postdata();
 					}
 				}

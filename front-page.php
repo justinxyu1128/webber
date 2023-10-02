@@ -32,7 +32,8 @@ get_header();
 		?>
 
 		<section class="home-blog">
-	<h2><?php esc_html_e('Latest Blog Posts', 'webber'); ?></h2>
+			<h2><?php esc_html_e('Recent News', 'webber'); ?></h2>
+			<div id="home-blog-wrapper">
 	<?php
 	$args = array (
 		'post_type' => 'post',
@@ -47,7 +48,7 @@ get_header();
 				<a href="<?php the_permalink(); ?>">
 				<?php
 					the_post_thumbnail(
-						'portrait-blog-crop',
+						'blog-post',
 						array(
 							'alt' => the_title_attribute(
 								array(
@@ -67,6 +68,7 @@ get_header();
 				wp_reset_postdata();
 				}
 				?>
+			</div>
 		</section>
 
 	</main><!-- #main -->

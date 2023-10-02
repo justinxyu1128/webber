@@ -12,19 +12,24 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php the_custom_logo(); ?></a>
 		<div class="site-info">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php the_custom_logo(); ?></a>
+			<h2>Credits</h2>
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'webber' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( 'Proudly powered by %s', 'webber' ), 'WordPress' );
 				?>
 			</a>
-			<span class="sep"> | </span>
+			<p>
 				<?php
 				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'webber' ), 'webber', '<a href="https://justiny.ca/">Justin Yu</a>' );
+				printf( esc_html__( 'Theme: Webber', 'webber' ) );
 				?>
+			</p>
+			<p>
+				created by <a href="https://justiny.ca/">Justin Yu and Sally Leung</a>
+			</p>
 		</div><!-- .site-info -->
 		<nav class="footer-navigation">
 			<h2>Links</h2>

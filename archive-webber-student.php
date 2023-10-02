@@ -20,7 +20,7 @@ get_header();
 				post_type_archive_title( '<h1 class="page-title">', '</h1>' );
 				?>
 			</header><!-- .page-header -->
-
+			<div class="student-wrapper">
 			<?php
 			/* Start the Loop */
             $args = array(
@@ -37,18 +37,21 @@ get_header();
                     <article>
                         <a href="<?php the_permalink(); ?>">
                             <h2><?php the_title(); ?></h2>
-                            <?php the_post_thumbnail( 'large' ); ?>
+                            <?php the_post_thumbnail( 'blog-post' ); ?>
                         </a>
-                        <?php the_excerpt(); ?>
+                        <?php 
+						the_excerpt();
+						$terms = get_the_term_list($post->ID, 'webber-student-category', 'Specialty:');
+                        echo $terms;
+						?>
                     </article>
 					<?php 
-                            $terms = get_the_term_list($post->ID, 'webber-student-category', 'Specialty:');
-                            echo $terms;
 				}
 				wp_reset_postdata();
 			}
         endif;
 		?>
+		</div>
 	</main><!-- #primary -->
 
 <?php

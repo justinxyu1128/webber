@@ -21,3 +21,80 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.home-blog h2{
+	text-align: center;
+	width: auto;
+}
+
+#home-blog-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	article {
+		position: relative;
+		margin: 10px;
+		h3 {
+			position: absolute;
+			bottom: -15px;
+			left: 0;
+			right: 0;
+			background-color: white;
+			text-align: center;
+			opacity: 0.7;
+			color: black;
+			&:hover {
+				color: $color__link-hover;
+			}
+		}
+	}
+}
+
+
+
+#primary > article.student-category {
+	margin-bottom: 50px;
+	img {
+		display: inline;
+		float: left;
+		margin-right: 1.5em;
+	}
+	
+}
+
+.student-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	article {
+		max-width: 300px;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 37.5em) {
+	#home-blog-wrapper {
+		flex-wrap: nowrap;
+		article {
+			width: 200px;
+		}
+	}
+	.staff-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		article {
+			width: 48%;
+			margin-right: 10px;
+		}
+	}
+	.student-wrapper > article {
+		width: 48%;
+	}
+}
+
+@media screen and (min-width: 56.5em){
+	.student-wrapper > article {
+		width: 30%;
+		margin-right: 10px;
+	}
+}
+

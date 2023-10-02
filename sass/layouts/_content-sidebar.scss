@@ -1,6 +1,6 @@
 .site {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+  grid-template-columns: 1fr minmax(0, 900px) 1fr;
   grid-template-areas:
     "header header header"
     ". main ."

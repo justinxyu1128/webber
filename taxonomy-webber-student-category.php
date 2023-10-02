@@ -32,11 +32,11 @@ get_header();
 	while ( have_posts() ) :
 		the_post();
 		?>
-		<article>
+		<article class="student-category">
 			<a href="<?php the_permalink(); ?>">
 				<h2><?php the_title(); ?></h2>
-				<?php the_post_thumbnail( 'student-portrait' ); ?>
 			</a>
+			<?php the_post_thumbnail( 'student-portrait' ); ?>
 			<?php the_content(); ?>
 		</article>
 	<?php
