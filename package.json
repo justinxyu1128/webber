@@ -1,8 +1,8 @@
 {
-  "name": "fwd-wp-school-site",
+  "name": "webber-school-site",
   "version": "1.0.0",
   "description": "FWD 3600 WordPress Site #3 (School)",
-  "author": "FWD Student",
+  "author": "Justin Yu, Sally Leung",
   "license": "GPL-3.0",
   "main": "index.php",
   "scripts": {
