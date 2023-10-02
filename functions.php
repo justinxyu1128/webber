@@ -173,8 +173,8 @@ function webber_change_title_text( $title ){
 }
   
 add_filter( 'enter_title_here', 'webber_change_title_text' );
-add_image_size( 'student-portrait', 200, 300);
-add_image_size( 'blog-post', 300, 200, array( 'left', 'top' ));
+add_image_size( 'student-portrait', 200, 300, array( 'top', 'bottom' ));
+add_image_size( 'blog-post', 300, 200, true);
 
 
 /**
