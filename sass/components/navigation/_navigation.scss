@@ -1,109 +1,201 @@
+
+
+#masthead {
+  background-color: $color__background-nav;
+  a {
+    color: $color__link-nav;
+    text-transform: uppercase;
+    padding: 0.8rem;
+    text-decoration: none;
+  }
+  p {
+    margin: auto;
+    font-size: 1.5rem;
+    padding: 5px 0;
+  }
+}
+
 .main-navigation {
-	display: block;
-	width: 100%;
+  display: block;
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    width: auto;
 
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
+    ul {
+      li {
+        &:hover > ul,
+        &.focus > ul {
+          display: block;
+          left: auto;
+        }
+      }
+      a {
+        background-color: gray;
+      }
+      a:hover,
+      a.focus {
+        background-color: $color__link-hover-nav;
+      }
+    }
 
-			ul {
-				left: -999em;
-				top: 0;
-			}
+    li:hover > ul,
+    li.focus > ul {
+      left: auto;
+    }
+  }
 
-			li {
+  li {
+    position: relative;
 
-				&:hover > ul,
-				&.focus > ul {
-					display: block;
-					left: auto;
-				}
-			}
+    &:hover > a,
+    &.focus > a {
+      background-color: $color__link-hover-nav;
+    }
+  }
 
-			a {
-				width: 200px;
-			}
+  a {
+    display: block;
+    text-decoration: none;
+    font-size: $font-size-nav-link;
+    text-align: center;
+  }
 
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-
-	li {
-		position: relative;
-
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-
-	a {
-		display: block;
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
+  .current_page_item > a,
+  .current-menu-item > a,
+  .current_page_ancestor > a,
+  .current-menu-ancestor > a {
+    background-color: $color__link-hover-nav;
+  }
 }
 
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+  display: block;
 }
 
+.menu-toggle {
+  display: block;
+  width: 46px;
+  height: 46px;
+  background: transparent;
+  margin-right: 5px;
+  border-style: none;
+  position: absolute;
+  right: 0rem;
+  top: 2.8rem;
+}
+
+.hamburger-menu {
+  display: block;
+  position: relative;
+  left: -10px;
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  border-style: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after {
+  content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+.hamburger-menu::before {
+  transform: translateY(-10px);
+}
+
+.hamburger-menu::after {
+  transform: translateY(10px);
+}
+
+.main-navigation.toggled {
+  .hamburger-menu {
+    background: transparent;
+  }
+  .hamburger-menu::before {
+    transform: rotate(45deg);
+  }
+  .hamburger-menu::after {
+    transform: rotate(-45deg);
+  }
+}
+
+
+
+
 @media screen and (min-width: 37.5em) {
+  .menu-toggle {
+    display: none;
+  }
 
-	.menu-toggle {
-		display: none;
-	}
+  .main-navigation ul {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-	.main-navigation ul {
-		display: flex;
-	}
+  .site-header {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 16rem) minmax(auto, 43rem)  1fr;
+    align-items: center;
+  }
+
+  .site-branding {
+    grid-column: 2/3;
+  }
+
+  .sub-menu {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    float: left;
+    position: absolute;
+    top: 100%;
+    left: -999em;
+    z-index: 99999;
+    flex-direction: column;
+    & > li.menu-item {
+    margin-left: 0;
+    background-color: $color__background-nav;
+      & > a {
+        width: 120px;
+        background-color: $color__background-nav;
+      }
+    }
+  }
+  
 }
 
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
+  .site-main & {
+    margin: 0 0 1.5em;
+  }
 
-	.site-main & {
-		margin: 0 0 1.5em;
-	}
+  .nav-links {
+    display: flex;
+  }
 
-	.nav-links {
-		display: flex;
-	}
+  .nav-previous {
+    flex: 1 0 50%;
+  }
 
-	.nav-previous {
-		flex: 1 0 50%;
-	}
-
-	.nav-next {
-		text-align: end;
-		flex: 1 0 50%;
-	}
+  .nav-next {
+    text-align: end;
+    flex: 1 0 50%;
+  }
 }

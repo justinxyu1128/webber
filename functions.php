@@ -12,6 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -49,7 +50,8 @@ function webber_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'webber' ),
+			'header' => esc_html__( 'Header', 'webber' ),
+			'footer' => esc_html__( 'Footer', 'webber' ),
 		)
 	);
 
@@ -93,12 +95,15 @@ function webber_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 50,
+			'width'       => 50,
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
 	);
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'align-full' );
+	
 }
 add_action( 'after_setup_theme', 'webber_setup' );
 
@@ -146,8 +151,31 @@ function webber_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	
+	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'aos-settings', get_template_directory_uri() . '/js/scroll.js', array(), _S_VERSION, true );
+	
+
 }
 add_action( 'wp_enqueue_scripts', 'webber_scripts' );
+
+function webber_change_title_text( $title ){
+	$screen = get_current_screen();
+  
+	if  ( 'webber-student' == $screen->post_type ) {
+		 $title = 'Add student name';
+	}
+	if  ( 'webber-staff' == $screen->post_type ) {
+		$title = 'Add staff name';
+   }
+  
+	return $title;
+}
+  
+add_filter( 'enter_title_here', 'webber_change_title_text' );
+add_image_size( 'student-portrait', 200, 300, array( 'top', 'bottom' ));
+add_image_size( 'blog-post', 300, 200, true);
+
 
 /**
  * Implement the Custom Header feature.
@@ -176,3 +204,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+function webber_excerpt_length( $length ) {
+    return 25;
+}
+
+function webber_excerpt_read_more( $more ) {
+    $more = '... <a class="read-more" href="' . esc_url( get_permalink() ) . '">Read more about the student...</a>';
+    return $more;
+}

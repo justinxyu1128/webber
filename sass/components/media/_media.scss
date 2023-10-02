@@ -9,5 +9,11 @@
 
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
-	display: inline-block;
+	max-width: 90px;
+}
+
+@media screen and (min-width: 37.5em) {
+	.custom-logo-link {
+		margin-top: 10px;
+	}
 }
