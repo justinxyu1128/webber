@@ -71,6 +71,19 @@
 	}
 }
 
+#title-404 {
+	margin: 10px auto;
+	width: max-content;
+	font-size: 1em;
+}
+#content-404 > *{
+	width: max-content;
+	margin: auto;
+	& input[type="search"] {
+		width: 70%;
+	}
+}
+
 @media screen and (min-width: 37.5em) {
 	#home-blog-wrapper {
 		flex-wrap: nowrap;
@@ -89,12 +102,25 @@
 	.student-wrapper > article {
 		width: 48%;
 	}
+	#title-404 {
+	font-size: 2em;
+	}
+	#content-404 > *{
+		& input[type="search"] {
+			width: 300px;
+		}
+	}
 }
 
 @media screen and (min-width: 56.5em){
 	.student-wrapper > article {
 		width: 30%;
 		margin-right: 10px;
+	}
+	#content-404 > *{
+		& input[type="search"] {
+			width: 600px;
+		}
 	}
 }
 
